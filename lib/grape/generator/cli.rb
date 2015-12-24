@@ -88,7 +88,7 @@ module Grape
 
         def exec(commands)
           commands.map do |cmd|
-            run cmd, @config
+            run cmd, @config.merge(capture:false)
             raise "Failed in exec `#{cmd}`" unless $?.exitstatus == 0
           end
         end
